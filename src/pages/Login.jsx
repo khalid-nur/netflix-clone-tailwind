@@ -1,8 +1,30 @@
-import React from "react";
+import { useState } from "react";
 import netflixBg from "../assets/netflix-bg.jpg";
 import { Link } from "react-router-dom";
+import { UserAuth } from "../context/AuthContext";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState(null);
+  const { user, logIn } = UserAuth();
+  const navigate = useNavigate();
+
+  const submitHandler = async (e) => {
+    e.preventDefault();
+    setError(null);
+    try {
+      await logIn(email, password);
+
+      setEmail("");
+      setPassword("");
+      navigate("/");
+    } catch (error) {
+      console.log(error.message);
+      setError(error.message);
+    }
+  };
   return (
     <div className="w-full h-screen">
       <img
@@ -15,16 +37,30 @@ const Login = () => {
         <div className="max-w-[450px] h-[660px] mx-auto bg-black/75 text-white">
           <div className="max-w-[320px] mx-auto py-16">
             <h1 className=" text-3xl font-bold">Sign In</h1>
-            <form className="w-full flex flex-col py-4">
+            {error && (
+              <p className=" mt-6 py-3 px-5 bg-[#e87c03] text-sm rounded">
+                Sorry, we can't find an account with this email address. Please
+                try again or{" "}
+                <Link className=" underline" to={"/signup"}>
+                  create a new account.
+                </Link>
+              </p>
+            )}
+            <form
+              onSubmit={submitHandler}
+              className="w-full flex flex-col py-4"
+            >
               <input
-                className="p-3 my-2 bg-[#e8f0fe] rounded"
+                className="p-3 my-2 bg-[#e8f0fe] text-black rounded  focus:outline-none"
                 type="email"
                 placeholder="Email"
+                onChange={(e) => setEmail(e.target.value)}
               />
               <input
-                className="p-3 my-2 bg-[#e8f0fe] rounded"
+                className="p-3 my-2 bg-[#e8f0fe] text-black rounded  focus:outline-none"
                 type="password"
                 placeholder="Password"
+                onChange={(e) => setPassword(e.target.value)}
               />
               <button className="bg-red-600 py-3 my-6 rounded font-bold">
                 Sign In
