@@ -3,6 +3,7 @@ import { FaHeart, FaRegHeart } from "react-icons/fa";
 import { UserAuth } from "../context/AuthContext";
 import { db } from "../firebase";
 import { arrayUnion, updateDoc, doc } from "firebase/firestore";
+import { toast, Flip } from "react-toastify";
 
 const Movies = ({ item }) => {
   const [like, setLike] = useState(false);
@@ -25,7 +26,16 @@ const Movies = ({ item }) => {
         }),
       });
     } else {
-      alert("please login to save a movie");
+      toast.warn("Please login to save a movie", {
+        position: "top-center",
+        autoClose: 2000,
+        hideProgressBar: true,
+        closeOnClick: true,
+        pauseOnHover: false,
+        draggable: false,
+        theme: "light",
+        transition: Flip,
+      });
     }
   };
 
