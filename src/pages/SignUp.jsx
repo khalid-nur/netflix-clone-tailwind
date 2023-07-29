@@ -8,22 +8,28 @@ const SignUp = () => {
   const [password, setPassword] = useState("");
   const { user, signUp } = UserAuth();
   const navigate = useNavigate();
+  const [passwordError, setPasswordError] = useState("");
 
   const submitHandler = async (e) => {
     e.preventDefault();
+
+    if (password.length < 4 || password.length > 60) {
+      setPasswordError("Password should be at least 6 characters");
+      return;
+    }
 
     try {
       await signUp(email, password);
 
       setEmail("");
       setPassword("");
+      setPasswordError("");
       navigate("/");
     } catch (error) {
-      console.log(error);
+      // console.log(error);
     }
   };
 
-  console.log(user);
   return (
     <>
       <div className="w-full h-screen">
@@ -45,6 +51,7 @@ const SignUp = () => {
                   className="p-3 my-2 bg-[#e8f0fe] text-black rounded focus:outline-none"
                   type="email"
                   placeholder="Email"
+                  autoComplete="email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                 />
@@ -52,9 +59,13 @@ const SignUp = () => {
                   className="p-3 my-2 bg-[#e8f0fe] text-black rounded focus:outline-none"
                   type="password"
                   placeholder="Password"
+                  autoComplete="current-password"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                 />
+                {passwordError && (
+                  <p className="text-[#b92d2b] text-xs">{passwordError}</p>
+                )}
                 <button className="bg-red-600 py-3 my-6 rounded font-bold">
                   Sign Up
                 </button>
