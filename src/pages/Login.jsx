@@ -54,12 +54,14 @@ const Login = () => {
                 className="p-3 my-2 bg-[#e8f0fe] text-black rounded  focus:outline-none"
                 type="email"
                 placeholder="Email"
+                autoComplete="email"
                 onChange={(e) => setEmail(e.target.value)}
               />
               <input
                 className="p-3 my-2 bg-[#e8f0fe] text-black rounded  focus:outline-none"
                 type="password"
                 placeholder="Password"
+                autoComplete="current-password"
                 onChange={(e) => setPassword(e.target.value)}
               />
               <button className="bg-red-600 py-3 my-6 rounded font-bold">

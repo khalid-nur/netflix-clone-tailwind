@@ -10,8 +10,6 @@ const Movies = ({ item }) => {
   const [saved, setSaved] = useState(false);
   const { user } = UserAuth();
 
-  console.log(user);
-
   const movieID = doc(db, "users", `${user?.email}`);
 
   const saveMovie = async () => {

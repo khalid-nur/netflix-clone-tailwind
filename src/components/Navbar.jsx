@@ -14,7 +14,6 @@ const Navbar = () => {
     } catch (error) {}
   };
 
-  console.log(user);
   return (
     <div className="flex items-center justify-between p-4 w-full absolute z-10">
       <Link to={"/"}>

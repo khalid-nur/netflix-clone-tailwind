@@ -4,6 +4,7 @@ import { db } from "../firebase";
 import { updateDoc, doc, onSnapshot } from "firebase/firestore";
 import { MdChevronRight, MdChevronLeft } from "react-icons/md";
 import { AiOutlineClose } from "react-icons/ai";
+import { toast, Flip } from "react-toastify";
 
 export const SavedMovies = () => {
   const [movies, setMovies] = useState([]);
@@ -20,7 +21,6 @@ export const SavedMovies = () => {
 
   useEffect(() => {
     onSnapshot(doc(db, "users", `${user?.email}`), (doc) => {
-      console.log(doc.data());
       setMovies(doc.data()?.savedMovies);
     });
     return () => {};
@@ -37,11 +37,18 @@ export const SavedMovies = () => {
         savedMovies: result,
       });
     } catch (error) {
-      console.log(error);
+      toast.error("An error occurred while deleting the movie", {
+        position: "top-center",
+        autoClose: 2000,
+        hideProgressBar: true,
+        closeOnClick: true,
+        pauseOnHover: false,
+        draggable: false,
+        theme: "light",
+        transition: Flip,
+      });
     }
   };
-
-  console.log(movies);
 
   return (
     <>
