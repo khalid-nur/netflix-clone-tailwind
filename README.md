@@ -18,7 +18,7 @@ This is a React.JS-based clone of Netflix, utilizing Firebase as its backend. Wh
 
 # Live Demo
 
-**_You can access the live version by visiting the following link:_**
+**_You can access the live version by visiting the following link:_** https://netflix-clone-563ce.web.app/
 
 # Project Overview:
 
