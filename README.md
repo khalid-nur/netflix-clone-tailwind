@@ -139,33 +139,35 @@ To run this React app in a local development environment, you'll need the follow
 
 1. Ensure you have [Git](https://git-scm.com) and [Node.js](https://nodejs.org/en/download/) installed on your computer.
 
-2. Create a Firebase account at [Firebase](https://firebase.com) and set up a dedicated project 3. Then From your terminal, you should do the following:
+2. Create a Firebase account at [Firebase](https://firebase.com) and set up a dedicated project
 
-3. Clone the repository:
+3. Then From your terminal, you should do the following:
 
-   ```shell
-   git clone https://github.com/khalid-nur/netflix-clone-tailwind.git
+   1. Clone the repository:
 
-   ```
+      ```shell
+      git clone https://github.com/khalid-nur/netflix-clone-tailwind.git
 
-4. Navigate to the project directory:
+      ```
 
-   ```shell
-   cd netflix-clone-tailwind
+   2. Navigate to the project directory:
 
-   ```
+      ```shell
+      cd netflix-clone-tailwind
 
-5. Install the required dependencies:
+      ```
 
-   ```shell
-   npm install
-   ```
+   3. Install the required dependencies:
 
-6. Run the app
+      ```shell
+      npm install
+      ```
 
-   ```shell
-   npm start
-   ```
+   4. Run the app
+
+      ```shell
+      npm start
+      ```
 
 # Show Your Support
 
